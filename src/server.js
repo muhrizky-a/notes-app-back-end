@@ -4,7 +4,8 @@ const routes = require('./routes');
 const init = async () => {
   const server = Hapi.server({
     port: 5000,
-    host: 'localhost',
+    // IP address diisi IP private dari instance EC2
+    host: process.env.NODE_ENV !== 'production' ? 'localhost' : '172.31.36.19',
     routes: {
       cors: {
         origin: ['*'],
